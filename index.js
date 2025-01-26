@@ -11,7 +11,16 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
-app.get('/api/hello', function (req, res) {
+app.get('/api/whoami', (req, res) => {
+  var ipAddress = req.ip;
+  var prefferedLanguage = req.headers['accept-language'];
+  var userAgent = req.headers['user-agent'];
+
+  res.json({
+    ip: ipAddress,
+    lang: prefferedLanguage,
+    agent: userAgent
+  })
 
 });
 
